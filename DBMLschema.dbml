@@ -12,37 +12,109 @@ Table Blog_Entry {
   user_name integer [not null]
   title varchar
 }
-  Ref: User.user_name < Blog_Entry.user_name
+  Ref: "User"."user_name" < "Blog_Entry"."user_name"
 
 Table User {
   user_name varchar [primary key]
   email varchar
   rating integer
   password varchar // nao sei se é varchar mesmo
-  registration_date timestamp
+  user_city varchar
+  user_country varchar
+  user_state varchar
+  registration_date timestamp [default: `now()`]
 }
-
-Table User_Adress {
-  user_name varchar [primary key]
-  city varchar
-  country varchar
-  state varchar
-}
-  Ref: User.user_name - User_Adress.user_name
 
 Table Friendship {
   user_name_1 varchar [primary key]
   user_name_2 varchar [primary key] 
 }
-  Ref: User.user_name < Friendship.user_name_1
-  Ref: User.user_name < Friendship.user_name_2
+  Ref: "User"."user_name" < "Friendship"."user_name_1"
+  Ref: "User"."user_name" < "Friendship"."user_name_2"
 
 Table BlogEntry_Comment_User_Creates {
   blog_Entry_ID integer [primary key]
   comment_ID integer [primary key]
   user_name varchar [primary key]
-  date timestamp [primary key]
+  date timestamp [primary key, default: `now()`] 
 }
-  Ref: Blog_Entry.entry_ID < BlogEntry_Comment_User_Creates.blog_Entry_ID
-  Ref: Comment.comment_ID < BlogEntry_Comment_User_Creates.comment_ID
-  Ref: User.user_name < BlogEntry_Comment_User_Creates.user_name
+  Ref: "Blog_Entry"."entry_ID" < "BlogEntry_Comment_User_Creates"."blog_Entry_ID"
+  Ref: "Comment"."comment_ID" < "BlogEntry_Comment_User_Creates"."comment_ID"
+  Ref: "User"."user_name" < "BlogEntry_Comment_User_Creates"."user_name"
+
+Table Group {
+  group_ID integer [primary key]
+  group_name varchar
+  user_name_creator varchar [not null]
+}
+  Ref: "User"."user_name" < "Group"."user_name_creator"
+
+Table User_Participa_Group {
+  group_ID integer [primary key]
+  user_name varchar [primary key]
+}
+  Ref: "Group"."group_ID" < "User_Participa_Group"."group_ID"
+  Ref: "User"."user_name" < "User_Participa_Group"."user_name"
+
+Table Contest {
+  contest_ID integer [primary key]
+  group_ID integer
+  is_private boolean [default: True]
+  start_time timestamp [default: `now()`]
+  frozen bool
+  duration time
+  name varchar
+  user_name_creator varchar
+
+}
+  Ref: "User"."user_name" < "Contest"."user_name_creator"
+  Ref: "Group"."group_ID" < "Contest"."group_ID"
+
+Table Gym {
+  contest_ID integer [primary key]
+  institution varchar
+  original_event_name varchar 
+}
+  Ref: "Contest"."contest_ID" < "Gym"."contest_ID"
+
+Table User_Participa_Contest {
+  user_name varchar [primary key]
+  contest_ID integer [primary key]
+  ranking integer [note: 'Derived']
+}
+  Ref: "User"."user_name" < "User_Participa_Contest"."user_name"
+  Ref: "Contest"."contest_ID" < "User_Participa_Contest"."contest_ID"
+
+Table Submission {
+  submission_ID integer [primary key]
+  user_name_submission varchar [not null]
+  submission_time timestamp [default: 'now']
+  language varchar
+  time_consumed time
+  points integer
+}
+  Ref: "User"."user_name" < "Submission"."user_name_submission"
+
+Table Problem {
+  problem_ID integer [primary key]
+  difficulty varchar
+  index integer
+  points integer
+  solved_count integer [note: 'Derived']
+}
+
+Table Problem_Supported_languages {
+  problem_ID integer [primary key]
+  language varchar
+}
+  Ref: "Problem"."problem_ID" < "Problem_Supported_languages"."problem_ID"
+
+Table Verdict {
+  verdict_ID integer [primary key]
+}
+
+Table TestCase {
+  problem_ID integer [primary key]
+  testcase_disc varchar
+}
+  Ref: "Problem"."problem_ID" < "TestCase"."problem_ID"
