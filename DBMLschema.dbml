@@ -1,0 +1,48 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+// Build: https://dbdiagram.io/d
+
+Table Comment {
+  comment_ID integer [primary key]
+  comment_ID_pai integer
+}
+
+Table Blog_Entry {
+  entry_ID integer [primary key]
+  user_name integer [not null]
+  title varchar
+}
+  Ref: User.user_name < Blog_Entry.user_name
+
+Table User {
+  user_name varchar [primary key]
+  email varchar
+  rating integer
+  password varchar // nao sei se é varchar mesmo
+  registration_date timestamp
+}
+
+Table User_Adress {
+  user_name varchar [primary key]
+  city varchar
+  country varchar
+  state varchar
+}
+  Ref: User.user_name - User_Adress.user_name
+
+Table Friendship {
+  user_name_1 varchar [primary key]
+  user_name_2 varchar [primary key] 
+}
+  Ref: User.user_name < Friendship.user_name_1
+  Ref: User.user_name < Friendship.user_name_2
+
+Table BlogEntry_Comment_User_Creates {
+  blog_Entry_ID integer [primary key]
+  comment_ID integer [primary key]
+  user_name varchar [primary key]
+  date timestamp [primary key]
+}
+  Ref: Blog_Entry.entry_ID < BlogEntry_Comment_User_Creates.blog_Entry_ID
+  Ref: Comment.comment_ID < BlogEntry_Comment_User_Creates.comment_ID
+  Ref: User.user_name < BlogEntry_Comment_User_Creates.user_name
