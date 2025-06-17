@@ -18,7 +18,7 @@ Table User {
   user_name varchar [primary key]
   email varchar
   rating integer
-  password varchar // nao sei se é varchar mesmo
+  password varchar
   user_city varchar
   user_country varchar
   user_state varchar
@@ -46,6 +46,9 @@ Table Group {
   group_ID integer [primary key]
   group_name varchar
   user_name_creator varchar [not null]
+  is_private boolean [default: True]
+  qnt_members integer [note: 'Derived']
+  type varchar
 }
   Ref: "User"."user_name" < "Group"."user_name_creator"
 
@@ -112,6 +115,23 @@ Table Problem_Supported_languages {
 Table Verdict {
   verdict_ID integer [primary key]
 }
+
+Table Submission_Tem_Problem {
+  submission_ID integer [primary key]
+  problem_ID integer [primary key]
+  verdict_ID integer
+  status varchar
+}
+  Ref: "Submission"."submission_ID" < "Submission_Tem_Problem"."submission_ID"
+  Ref: "Problem"."problem_ID" < "Submission_Tem_Problem"."problem_ID"
+  Ref: "Verdict"."verdict_ID" < "Submission_Tem_Problem"."verdict_ID"
+
+Table Contest_Tem {
+  contest_ID integer [primary key]
+  submission_tem_problem_ID integer [primary key]
+}
+  Ref: "Submission_Tem_Problem"."submission_ID" < "Contest_Tem"."submission_tem_problem_ID"
+  Ref: "Submission_Tem_Problem"."problem_ID" < "Contest_Tem"."submission_tem_problem_ID"
 
 Table TestCase {
   problem_ID integer [primary key]
