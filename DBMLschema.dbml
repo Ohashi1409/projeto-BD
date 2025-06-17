@@ -1,6 +1,8 @@
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
 // Build: https://dbdiagram.io/d
+// Logical Project: https://docs.google.com/document/d/1jtKEYDBEj7LErkfpHmhh2-ZMlEA0MVmVIGZ0Mc41hqg/edit?usp=sharing
+
 
 Table Comment {
   comment_ID integer [primary key]
@@ -130,6 +132,7 @@ Table Contest_Tem {
   contest_ID integer [primary key]
   submission_tem_problem_ID integer [primary key]
 }
+  Ref: "Contest"."contest_ID" < "Contest_Tem"."contest_ID"
   Ref: "Submission_Tem_Problem"."submission_ID" < "Contest_Tem"."submission_tem_problem_ID"
   Ref: "Submission_Tem_Problem"."problem_ID" < "Contest_Tem"."submission_tem_problem_ID"
 
