@@ -108,6 +108,11 @@ Table Problem {
   solved_count integer [note: 'Derived']
 }
 
+Table Solution {
+  problem_ID integer [primary key]
+}
+  Ref: "Problem"."problem_ID" < "Solution"."problem_ID"
+
 Table Problem_Supported_languages {
   problem_ID integer [primary key]
   language varchar
