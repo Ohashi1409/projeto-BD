@@ -11,13 +11,14 @@ Table Comment {
 
 Table Blog_Entry {
   entry_ID integer [primary key]
-  user_name integer [not null]
+  user_id integer [not null]
   title varchar
 }
-  Ref: "User"."user_name" < "Blog_Entry"."user_name"
+  Ref: "User"."id" < "Blog_Entry"."user_id"
 
 Table User {
-  user_name varchar [primary key]
+  id varchar [primary key]
+  user_name varchar
   email varchar
   rating integer
   password varchar
@@ -28,38 +29,38 @@ Table User {
 }
 
 Table Friendship {
-  user_name_1 varchar [primary key]
-  user_name_2 varchar [primary key] 
+  id_1 varchar [primary key]
+  id_2 varchar [primary key] 
 }
-  Ref: "User"."user_name" < "Friendship"."user_name_1"
-  Ref: "User"."user_name" < "Friendship"."user_name_2"
+  Ref: "User"."id" < "Friendship"."id_1"
+  Ref: "User"."id" < "Friendship"."id_2"
 
 Table BlogEntry_Comment_User_Creates {
   blog_Entry_ID integer [primary key]
   comment_ID integer [primary key]
-  user_name varchar [primary key]
+  user_id varchar [primary key]
   date timestamp [primary key, default: `now()`] 
 }
   Ref: "Blog_Entry"."entry_ID" < "BlogEntry_Comment_User_Creates"."blog_Entry_ID"
   Ref: "Comment"."comment_ID" < "BlogEntry_Comment_User_Creates"."comment_ID"
-  Ref: "User"."user_name" < "BlogEntry_Comment_User_Creates"."user_name"
+  Ref: "User"."id" < "BlogEntry_Comment_User_Creates"."user_id"
 
 Table Group {
   group_ID integer [primary key]
   group_name varchar
-  user_name_creator varchar [not null]
+  user_id_creator varchar [not null]
   is_private boolean [default: True]
   qnt_members integer [note: 'Derived']
   type varchar
 }
-  Ref: "User"."user_name" < "Group"."user_name_creator"
+  Ref: "User"."id" < "Group"."user_id_creator"
 
 Table User_Participa_Group {
   group_ID integer [primary key]
-  user_name varchar [primary key]
+  user_id varchar [primary key]
 }
   Ref: "Group"."group_ID" < "User_Participa_Group"."group_ID"
-  Ref: "User"."user_name" < "User_Participa_Group"."user_name"
+  Ref: "User"."id" < "User_Participa_Group"."user_id"
 
 Table Contest {
   contest_ID integer [primary key]
@@ -69,10 +70,10 @@ Table Contest {
   frozen bool
   duration time
   name varchar
-  user_name_creator varchar
+  user_id_creator varchar
 
 }
-  Ref: "User"."user_name" < "Contest"."user_name_creator"
+  Ref: "User"."id" < "Contest"."user_id_creator"
   Ref: "Group"."group_ID" < "Contest"."group_ID"
 
 Table Gym {
@@ -83,22 +84,22 @@ Table Gym {
   Ref: "Contest"."contest_ID" < "Gym"."contest_ID"
 
 Table User_Participa_Contest {
-  user_name varchar [primary key]
+  user_id varchar [primary key]
   contest_ID integer [primary key]
   ranking integer [note: 'Derived']
 }
-  Ref: "User"."user_name" < "User_Participa_Contest"."user_name"
+  Ref: "User"."id" < "User_Participa_Contest"."user_id"
   Ref: "Contest"."contest_ID" < "User_Participa_Contest"."contest_ID"
 
 Table Submission {
   submission_ID integer [primary key]
-  user_name_submission varchar [not null]
+  user_id_submission varchar [not null]
   submission_time timestamp [default: 'now']
   language varchar
   time_consumed time
   points integer
 }
-  Ref: "User"."user_name" < "Submission"."user_name_submission"
+  Ref: "User"."id" < "Submission"."user_id_submission"
 
 Table Problem {
   problem_ID integer [primary key]
