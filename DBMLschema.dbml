@@ -94,14 +94,12 @@ Table User_Participa_Contest {
 Table Submission {
   submission_ID integer [primary key]
   user_id_submission varchar [not null]
-  problem_ID integer [not null]
   submission_time timestamp [default: 'now']
   language varchar
   time_consumed time
   points integer
 }
   Ref: "User"."id" < "Submission"."user_id_submission"
-  Ref: "Problem"."problem_ID" < "Submission"."problem_ID"
 
 Table Problem {
   problem_ID integer [primary key]
