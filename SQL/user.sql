@@ -105,7 +105,7 @@ CREATE TABLE problem_table (
 CREATE TABLE problem_supported_languages (
     problem_id INTEGER,
     language VARCHAR(255),
-    PRIMARY KEY (problem_id),
+    PRIMARY KEY (problem_id, language),
     FOREIGN KEY (problem_id) REFERENCES problem_table(problem_id)
 );
 
