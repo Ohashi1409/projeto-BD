@@ -1,7 +1,11 @@
 {
   "scripts": {
-    "create-table": "mysql -u root -p -h 127.0.0.1 -P 3306 --protocol=TCP codeforces-db < SQL/tables.sql",
-    "clean-database": "mysql -u root -p -h 127.0.0.1 -P 3306 --protocol=TCP codeforces-db < SQL/clean_database.sql",
+    "create-table": "docker exec -i codeforces-db-container mysql -u root -prootpassword codeforces-db < SQL/tables.sql",
+    "clean-database": "docker exec -i codeforces-db-container mysql -u root -prootpassword codeforces-db < SQL/clean_database.sql",
+
+    "create-table-linux": "sudo docker exec -i codeforces-db-container mysql -u root -prootpassword codeforces-db < SQL/tables.sql",
+    "clean-database-linux": "sudo docker exec -i codeforces-db-container mysql -u root -prootpassword codeforces-db < SQL/clean_database.sql",
+
     "populate": "python3 SQL/populate_database.py"
   }
 }
