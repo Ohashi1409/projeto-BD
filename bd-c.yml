@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mysql:
+    container_name: codeforces-db-container
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: codeforces-db
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha
+    volumes:
+      - my-datavolume:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  my-datavolume:
