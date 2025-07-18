@@ -123,8 +123,8 @@ class DatabasePopulator:
         Verifica se o banco foi populado corretamente
         """
         tables_to_check = [
-            'usuarios', 'problemas', 'contests', 
-            'submissoes', 'participacoes', 'amizades'
+            'user_table', 'problem_table', 'contest_table', 
+            'submission_table', 'user_participates_contest', 'friendship'
         ]
         
         print("=== Verificando população do banco ===")
