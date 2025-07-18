@@ -1,0 +1,20 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS `blog_comment`;
+DROP TABLE IF EXISTS `blog_entry`;
+DROP TABLE IF EXISTS `blog_entry_comment`;
+DROP TABLE IF EXISTS `contest_fazParte`;
+DROP TABLE IF EXISTS `contest_table`;
+DROP TABLE IF EXISTS `friendship`;
+DROP TABLE IF EXISTS `group_table`;
+DROP TABLE IF EXISTS `gym_table`;
+DROP TABLE IF EXISTS `problem_supported_languages`;
+DROP TABLE IF EXISTS `problem_table`;
+DROP TABLE IF EXISTS `solution`;
+DROP TABLE IF EXISTS `submission_problem`;
+DROP TABLE IF EXISTS `submission_table`;
+DROP TABLE IF EXISTS `test_case`;
+DROP TABLE IF EXISTS `user_participates_contest`;
+DROP TABLE IF EXISTS `user_participates_group`;
+DROP TABLE IF EXISTS `user_table`;
+DROP TABLE IF EXISTS `verdict_table`;

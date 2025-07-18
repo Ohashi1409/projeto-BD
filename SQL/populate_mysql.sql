@@ -103,16 +103,26 @@ INSERT INTO user_participates_contest (user_id, contest_id, ranking) VALUES ('us
 INSERT INTO user_participates_contest (user_id, contest_id, ranking) VALUES ('user_7', 5, 5);
 
 -- Problems
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (1, 'hard', 58, 299, 42);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (2, 'hard', 35, 233, 82);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (3, 'hard', 32, 225, 7);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (4, 'hard', 76, 189, 44);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (5, 'medium', 78, 457, 71);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (6, 'hard', 67, 131, 45);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (7, 'hard', 53, 375, 25);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (8, 'hard', 69, 317, 84);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (9, 'easy', 92, 236, 95);
-INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count) VALUES (10, 'hard', 93, 485, 9);
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (1, 'hard', 58, 299, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (2, 'hard', 35, 233, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet sem vel erat dictum, vel varius nisl tempus. Integer vitae mauris eu nunc.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (3, 'hard', 32, 225, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Vivamus dapibus massa non justo accumsan, ut tincidunt nisl euismod.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (4, 'hard', 76, 189, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (5, 'medium', 78, 457, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut facilisis nulla. Maecenas porta, tortor id convallis sagittis, justo lorem dignissim elit.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (6, 'hard', 67, 131, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec semper lorem. Vivamus aliquam fringilla metus, at tristique ex efficitur eget.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (7, 'hard', 53, 375, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (8, 'hard', 69, 317, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere, est at bibendum hendrerit, purus eros luctus erat, vel pretium justo purus vel erat.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (9, 'easy', 92, 236, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur, justo at congue rutrum, tellus libero fermentum justo, vitae tincidunt libero.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (10, 'hard', 93, 485, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac lobortis mauris. Integer varius leo vel nibh gravida, at feugiat orci tincidunt.');
 
 -- Problem Supported Languages
 INSERT INTO problem_supported_languages (problem_id, supported_language) VALUES (1, 'C++');

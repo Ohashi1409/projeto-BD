@@ -93,6 +93,7 @@ CREATE TABLE user_participates_contest (
 
 CREATE TABLE problem_table (
     problem_id INT PRIMARY KEY,
+    problem_statement VARCHAR(500),
     difficulty VARCHAR(100),
     problem_index INT,
     points INT DEFAULT 0,

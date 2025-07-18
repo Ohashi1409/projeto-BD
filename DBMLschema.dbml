@@ -103,6 +103,7 @@ Table Submission {
 
 Table Problem {
   problem_ID integer [primary key]
+  problem_statement varchar
   difficulty varchar
   index integer
   points integer
