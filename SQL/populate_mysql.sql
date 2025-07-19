@@ -62,8 +62,8 @@ INSERT INTO user_participates_group (group_id, user_id) VALUES (5, 'user_17');
 INSERT INTO user_participates_group (group_id, user_id) VALUES (5, 'user_15');
 
 -- Contests
-INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (1, 3, 'user_9', 0, STR_TO_DATE('2025-06-17 23:17:31', '%Y-%m-%d %H:%i:%s'), 0, SEC_TO_TIME(5114), 'Policy Contest 1');
-INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (2, 4, 'user_15', 1, STR_TO_DATE('2025-06-02 20:17:12', '%Y-%m-%d %H:%i:%s'), 0, SEC_TO_TIME(6738), 'Street Contest 2');
+INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (1, 3, 'user_9', 0, STR_TO_DATE('2025-06-02 20:17:12', '%Y-%m-%d %H:%i:%s'), 0, SEC_TO_TIME(5114), 'Policy Contest 1');
+INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (2, 4, 'user_15', 1, STR_TO_DATE('2025-06-02 20:17:12', '%Y-%m-%d %H:%i:%s'), 0, SEC_TO_TIME(5114), 'Street Contest 2');
 INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (3, 4, 'user_18', 1, STR_TO_DATE('2025-05-31 14:54:41', '%Y-%m-%d %H:%i:%s'), 0, SEC_TO_TIME(94891), 'Herself Contest 3');
 INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (4, 5, 'user_4', 0, STR_TO_DATE('2025-03-22 14:38:48', '%Y-%m-%d %H:%i:%s'), 0, SEC_TO_TIME(3060), 'Include Contest 4');
 INSERT INTO contest_table (contest_id, group_id, user_id_creator, is_private, startTime, frozen_contest, contest_duration, contest_name) VALUES (5, 4, 'user_11', 1, STR_TO_DATE('2025-04-11 22:36:21', '%Y-%m-%d %H:%i:%s'), 1, SEC_TO_TIME(11456), 'Street Contest 5');
