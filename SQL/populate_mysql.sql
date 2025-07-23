@@ -123,6 +123,10 @@ INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved
 VALUES (9, 'easy', 92, 236, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur, justo at congue rutrum, tellus libero fermentum justo, vitae tincidunt libero.');
 INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
 VALUES (10, 'hard', 93, 485, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac lobortis mauris. Integer varius leo vel nibh gravida, at feugiat orci tincidunt.');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (11, 'hard', 95, 111, 0, 'Problema com problema! Falta algo!');
+INSERT INTO problem_table (problem_id, difficulty, problem_index, points, solved_count, problem_statement) 
+VALUES (12, 'hard', 100, 10, 0, 'Problema teste no banco, cadastrado com problema!');
 
 -- Problem Supported Languages
 INSERT INTO problem_supported_languages (problem_id, supported_language) VALUES (1, 'C++');
