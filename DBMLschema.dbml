@@ -146,5 +146,6 @@ Table Contest_Tem {
 Table TestCase {
   problem_ID integer [primary key]
   testcase_disc varchar
+  testcase_text varchar
 }
   Ref: "Problem"."problem_ID" < "TestCase"."problem_ID"
