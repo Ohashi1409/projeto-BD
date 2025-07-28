@@ -145,7 +145,8 @@ CREATE TABLE contest_fazParte (
 
 CREATE TABLE test_case (
     test_case_disc VARCHAR(255),
-    test_case_text VARCHAR(255), 
+    test_case_input VARCHAR(255), 
+    test_case_output VARCHAR(255),
     problem_id INT,
     PRIMARY KEY (problem_id, test_case_disc),
     FOREIGN KEY (problem_id) REFERENCES problem_table(problem_id)
