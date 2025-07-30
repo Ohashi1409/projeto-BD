@@ -67,24 +67,26 @@ python3 No-SQL/caminhoDaConsulta.py
 
 ### Entidades Principais
 
-- **User**: Usuários da plataforma (`userName`, `email`, `rating`, `endereço`, etc)
-- **Group**: Grupos de usuários (`group_id`, `group_name`, `tipo`, `membros`)
-- **Contest**: Competições (`contest_id`, `nome`, `duração`, `início`, etc)
-- **Problem**: Problemas de programação (`problem_id`, `statement`, `dificuldade`, `pontos`)
-- **Submission**: Submissões de soluções (`submission_id`, `tempo`, `linguagem`, `pontos`)
-- **Blog Entry**: Postagens de blog (`entry_id`, `título`)
-- **Comment**: Comentários em blogs (`comment_id`, `texto`, `replies`)
-- **Testcase**: Casos de teste de problemas
+- **User**: Armazena dados dos usuários da plataforma (`userID`, `userName`, `email`, `rating`, `user_city`, `user_country`, `user_state`, etc). 
+- **Group**: Modela os grupos de usuários, que podem ser públicos ou privados (`group ID`, `group_name`, `userID_creator`, `is_private`, `qnt_members`, `type`). 
+- **Contest**: Competições, que podem ser associadas a um grupo e ter um criador (`contest_ID`, `group_ID`, `name`, `duration`, `start_time`, `userID_creator`). 
+- **Gym**: É uma especialização da entidade Contest , com atributos adicionais (`gym_ID`, `institution`, `original_event_name`). 
+- **Problem**: Desafios de programação propostos nos contests (`problem_ID`, `problem_statement`, `difficulty`, `points`, `solved_count`). 
+- **Submission**: Soluções submetidas pelos usuários para os problemas (`submission ID`, `userID_submission`, `submission_time`, `language`, `points`). 
+- **Blog_Entry**: Postagens de blog criadas por usuários (`entry ID`, `userID`, `title`). 
+- **Comment**: Comentários em entradas de blog, com suporte para respostas (`comment ID`, `comment_ID_pai`). 
+- **TestCase**: Casos de teste associados a cada problema (`problem ID`, `testcase disc`). 
+- **Verdict**: Descreve os possíveis resultados de uma submissão (`verdict ID`). 
 
-### Relacionamentos
+### Relacionamentos e Tabelas Associativas
 
-- **Friendship**: Amizade entre usuários
-- **Creates**: Usuário cria blog entry ou comentário
-- **Participa**: Usuário participa de grupo ou contest
-- **Faz parte**: Problema faz parte de contest
-- **Sends**: Usuário envia submissão
-- **Tem**: Contest tem problemas, problema tem test cases
-- **Replies**: Comentários respondem outros comentários
+- **Friendship**: Relação de amizade N:N entre dois usuários (`userID 1`, `userID 2`). 
+- **User_Participa_Group**: Associa usuários a grupos, indicando participação (`group ID`, `userID`). 
+- **User_Participa_Contest**: Registra a participação e o ranking de um usuário em um contest (`userID`, `contest ID`, `ranking`). 
+- **BlogEntry_Comment_User_Creates**: Associa um usuário à criação de um comentário em uma entrada de blog em uma data específica (`blog Entry ID`, `comment_ID`, `userID`, `date`). 
+- **Submission_Tem_Problem**: Conecta uma submissão a um problema e ao seu respectivo veredito (`submission ID`, `problem_ID`, `verdict_ID`, `status`). 
+- **Contest_Tem**: Associa uma submissão de um problema a um contest (`contest_ID`, `submission_tem_problem_ID`). 
+- **Problem_Supported_languages**: Define as linguagens de programação permitidas para um determinado problema (`problem ID`, `language`). 
 
 ## Tecnologias Utilizadas
 
