@@ -135,12 +135,12 @@ Table Submission_Tem_Problem {
   Ref: "Problem"."problem_ID" < "Submission_Tem_Problem"."problem_ID"
   Ref: "Verdict"."verdict_ID" < "Submission_Tem_Problem"."verdict_ID"
 
-Table Contest_Tem {
+Table Contest_Tem_Problem {
   contest_ID integer [primary key]
-  submission_tem_problem_ID integer [primary key]
+  problem_ID integer [primary key]
 }
-  Ref: "Contest"."contest_ID" < "Contest_Tem"."contest_ID"
-  Ref: "Submission_Tem_Problem"."submission_ID" < "Contest_Tem"."submission_tem_problem_ID"
+  Ref: "Contest"."contest_ID" < "Contest_Tem_Problem"."contest_ID"
+  Ref: "Problem"."problem_ID" < "Contest_Tem_Problem"."problem_ID"
 
 Table TestCase {
   problem_ID integer [primary key]
