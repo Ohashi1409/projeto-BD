@@ -117,7 +117,7 @@ Table Solution {
 
 Table Problem_Supported_languages {
   problem_ID integer [primary key]
-  language varchar
+  language varchar [primary key]
 }
   Ref: "Problem"."problem_ID" < "Problem_Supported_languages"."problem_ID"
 
