@@ -67,26 +67,26 @@ python3 No-SQL/caminhoDaConsulta.py
 
 ### Entidades Principais
 
-- **User**: Armazena dados dos usuários da plataforma (`userID`, `userName`, `email`, `rating`, `user_city`, `user_country`, `user_state`, etc). [cite: 2]
-- **Group**: Modela os grupos de usuários, que podem ser públicos ou privados (`group ID`, `group_name`, `userID_creator`, `is_private`, `qnt_members`, `type`). [cite: 10]
-- **Contest**: Competições, que podem ser associadas a um grupo e ter um criador (`contest_ID`, `group_ID`, `name`, `duration`, `start_time`, `userID_creator`). [cite: 15]
-- **Gym**: É uma especialização da entidade Contest [cite: 19], com atributos adicionais (`gym_ID`, `institution`, `original_event_name`). [cite: 18]
-- **Problem**: Desafios de programação propostos nos contests (`problem_ID`, `problem_statement`, `difficulty`, `points`, `solved_count`). [cite: 27]
-- **Submission**: Soluções submetidas pelos usuários para os problemas (`submission ID`, `userID_submission`, `submission_time`, `language`, `points`). [cite: 23]
-- **Blog_Entry**: Postagens de blog criadas por usuários (`entry ID`, `userID`, `title`). [cite: 4]
-- **Comment**: Comentários em entradas de blog, com suporte para respostas (`comment ID`, `comment_ID_pai`). [cite: 1]
-- **TestCase**: Casos de teste associados a cada problema (`problem ID`, `testcase disc`). [cite: 38]
-- **Verdict**: Descreve os possíveis resultados de uma submissão (`verdict ID`). [cite: 30]
+- **User**: Armazena dados dos usuários da plataforma (`userID`, `userName`, `email`, `rating`, `user_city`, `user_country`, `user_state`, etc). 
+- **Group**: Modela os grupos de usuários, que podem ser públicos ou privados (`group ID`, `group_name`, `userID_creator`, `is_private`, `qnt_members`, `type`). 
+- **Contest**: Competições, que podem ser associadas a um grupo e ter um criador (`contest_ID`, `group_ID`, `name`, `duration`, `start_time`, `userID_creator`). 
+- **Gym**: É uma especialização da entidade Contest , com atributos adicionais (`gym_ID`, `institution`, `original_event_name`). 
+- **Problem**: Desafios de programação propostos nos contests (`problem_ID`, `problem_statement`, `difficulty`, `points`, `solved_count`). 
+- **Submission**: Soluções submetidas pelos usuários para os problemas (`submission ID`, `userID_submission`, `submission_time`, `language`, `points`). 
+- **Blog_Entry**: Postagens de blog criadas por usuários (`entry ID`, `userID`, `title`). 
+- **Comment**: Comentários em entradas de blog, com suporte para respostas (`comment ID`, `comment_ID_pai`). 
+- **TestCase**: Casos de teste associados a cada problema (`problem ID`, `testcase disc`). 
+- **Verdict**: Descreve os possíveis resultados de uma submissão (`verdict ID`). 
 
 ### Relacionamentos e Tabelas Associativas
 
-- **Friendship**: Relação de amizade N:N entre dois usuários (`userID 1`, `userID 2`). [cite: 2]
-- **User_Participa_Group**: Associa usuários a grupos, indicando participação (`group ID`, `userID`). [cite: 12]
-- **User_Participa_Contest**: Registra a participação e o ranking de um usuário em um contest (`userID`, `contest ID`, `ranking`). [cite: 20]
-- **BlogEntry_Comment_User_Creates**: Associa um usuário à criação de um comentário em uma entrada de blog em uma data específica (`blog Entry ID`, `comment_ID`, `userID`, `date`). [cite: 6]
-- **Submission_Tem_Problem**: Conecta uma submissão a um problema e ao seu respectivo veredito (`submission ID`, `problem_ID`, `verdict_ID`, `status`). [cite: 31]
-- **Contest_Tem**: Associa uma submissão de um problema a um contest (`contest_ID`, `submission_tem_problem_ID`). [cite: 35]
-- **Problem_Supported_languages**: Define as linguagens de programação permitidas para um determinado problema (`problem ID`, `language`). [cite: 28]
+- **Friendship**: Relação de amizade N:N entre dois usuários (`userID 1`, `userID 2`). 
+- **User_Participa_Group**: Associa usuários a grupos, indicando participação (`group ID`, `userID`). 
+- **User_Participa_Contest**: Registra a participação e o ranking de um usuário em um contest (`userID`, `contest ID`, `ranking`). 
+- **BlogEntry_Comment_User_Creates**: Associa um usuário à criação de um comentário em uma entrada de blog em uma data específica (`blog Entry ID`, `comment_ID`, `userID`, `date`). 
+- **Submission_Tem_Problem**: Conecta uma submissão a um problema e ao seu respectivo veredito (`submission ID`, `problem_ID`, `verdict_ID`, `status`). 
+- **Contest_Tem**: Associa uma submissão de um problema a um contest (`contest_ID`, `submission_tem_problem_ID`). 
+- **Problem_Supported_languages**: Define as linguagens de programação permitidas para um determinado problema (`problem ID`, `language`). 
 
 ## Tecnologias Utilizadas
 
