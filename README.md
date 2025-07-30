@@ -85,7 +85,7 @@ python3 No-SQL/caminhoDaConsulta.py
 - **User_Participa_Contest**: Registra a participação e o ranking de um usuário em um contest (`userID`, `contest ID`, `ranking`). 
 - **BlogEntry_Comment_User_Creates**: Associa um usuário à criação de um comentário em uma entrada de blog em uma data específica (`blog Entry ID`, `comment_ID`, `userID`, `date`). 
 - **Submission_Tem_Problem**: Conecta uma submissão a um problema e ao seu respectivo veredito (`submission ID`, `problem_ID`, `verdict_ID`, `status`). 
-- **Contest_Tem**: Associa uma submissão de um problema a um contest (`contest_ID`, `submission_tem_problem_ID`). 
+- **Contest_Tem_Problem**: Associa um problema a um contest (`contest_ID`, `problem_ID`). 
 - **Problem_Supported_languages**: Define as linguagens de programação permitidas para um determinado problema (`problem ID`, `language`). 
 
 ## Tecnologias Utilizadas
