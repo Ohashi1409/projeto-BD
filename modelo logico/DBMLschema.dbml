@@ -77,11 +77,11 @@ Table Contest {
   Ref: "Group"."group_ID" < "Contest"."group_ID"
 
 Table Gym {
-  contest_ID integer [primary key]
+  gym_ID integer [primary key]
   institution varchar
   original_event_name varchar 
 }
-  Ref: "Contest"."contest_ID" < "Gym"."contest_ID"
+  Ref: "Contest"."contest_ID" < "Gym"."gym_ID"
 
 Table User_Participa_Contest {
   user_id varchar [primary key]
@@ -117,7 +117,7 @@ Table Solution {
 
 Table Problem_Supported_languages {
   problem_ID integer [primary key]
-  language varchar [primary key]
+  language varchar
 }
   Ref: "Problem"."problem_ID" < "Problem_Supported_languages"."problem_ID"
 
@@ -127,7 +127,7 @@ Table Verdict {
 
 Table Submission_Tem_Problem {
   submission_ID integer [primary key]
-  problem_ID integer [primary key]
+  problem_ID integer [not null]
   verdict_ID integer
   status varchar
 }
@@ -141,11 +141,10 @@ Table Contest_Tem {
 }
   Ref: "Contest"."contest_ID" < "Contest_Tem"."contest_ID"
   Ref: "Submission_Tem_Problem"."submission_ID" < "Contest_Tem"."submission_tem_problem_ID"
-  Ref: "Submission_Tem_Problem"."problem_ID" < "Contest_Tem"."submission_tem_problem_ID"
 
 Table TestCase {
   problem_ID integer [primary key]
-  testcase_disc varchar
+  testcase_disc varchar [primary key]
   input varchar
   output varchar
 }
