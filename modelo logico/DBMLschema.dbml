@@ -49,7 +49,6 @@ Table Group {
   group_ID integer [primary key]
   group_name varchar
   user_id_creator varchar [not null]
-  is_private boolean [default: True]
   qnt_members integer [note: 'Derived']
   type varchar
 }
@@ -65,7 +64,6 @@ Table User_Participa_Group {
 Table Contest {
   contest_ID integer [primary key]
   group_ID integer
-  is_private boolean [default: True]
   start_time timestamp [default: `now()`]
   frozen bool
   duration time
@@ -112,6 +110,8 @@ Table Problem {
 
 Table Solution {
   problem_ID integer [primary key]
+  solution_disc integer [primary key]
+  source_code varchar
 }
   Ref: "Problem"."problem_ID" < "Solution"."problem_ID"
 
@@ -127,6 +127,7 @@ Table Verdict {
 
 Table Submission_Tem_Problem {
   submission_ID integer [primary key]
+  disc [primary key]
   problem_ID integer [not null]
   verdict_ID integer
   status varchar
