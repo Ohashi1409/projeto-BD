@@ -7,6 +7,7 @@
 Table Comment {
   comment_ID integer [primary key]
   comment_ID_pai integer
+  text varchar
 }
 
 Table Blog_Entry {
@@ -38,8 +39,8 @@ Table Friendship {
 Table BlogEntry_Comment_User_Creates {
   blog_Entry_ID integer [primary key]
   comment_ID integer [primary key]
-  user_id varchar [primary key]
-  date timestamp [primary key, default: `now()`] 
+  user_id varchar [not null]
+  creation_date timestamp [default: `now()`] 
 }
   Ref: "Blog_Entry"."entry_ID" < "BlogEntry_Comment_User_Creates"."blog_Entry_ID"
   Ref: "Comment"."comment_ID" < "BlogEntry_Comment_User_Creates"."comment_ID"
