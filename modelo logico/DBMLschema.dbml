@@ -111,7 +111,6 @@ Table Problem {
 
 Table Solution {
   problem_ID integer [primary key]
-  solution_disc integer [primary key]
   source_code varchar
 }
   Ref: "Problem"."problem_ID" < "Solution"."problem_ID"
