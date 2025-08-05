@@ -13,7 +13,7 @@ cursor = conn.cursor(dictionary=True)
 print(f"\n=== Projetar usuários com problemas aceitos ===")
 
 cursor.execute("""
-    SELECT UT.user_name
+    SELECT DISTINCT UT.user_name
     FROM user_table UT
     INNER JOIN submission_table ST ON ST.user_id = UT.id
     WHERE (ST.submission_id, 'Accepted') = (SELECT SP.submission_id, SP.status_submission_problem 

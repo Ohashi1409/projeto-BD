@@ -11,7 +11,7 @@ cursor = conn.cursor()
 
 print("===Usuários que são criadores de contests ou grupos===")
 query = """
-    SELECT id, user_name, email
+    SELECT DISTINCT id, user_name, email
     FROM user_table
     WHERE id in (
         SELECT user_id_creator 
