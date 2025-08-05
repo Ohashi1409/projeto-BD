@@ -10,21 +10,19 @@ conn = mysql.connector.connect(
     
 cursor = conn.cursor(dictionary=True)
 
-print("\n=== Submissões em Contests ===")
+print("\n=== Usuários e seus Grupos ===")
 
-# Objetivo: Listar o nome do usuário que realizou uma submissão e o nome do concurso em que ela foi feita.
+# Objetivo: Listar todos os usuários e os nomes dos grupos dos quais eles são membros.
 query = """
 SELECT
     u.user_name,
-    c.contest_name
+    g.group_name
 FROM
     user_table u
 INNER JOIN
-    submission_table s ON u.id = s.user_id
+    user_participates_group upg ON u.id = upg.user_id
 INNER JOIN
-    contest_fazParte cf ON s.submission_id = cf.submission_id
-INNER JOIN
-    contest_table c ON cf.contest_id = c.contest_id
+    group_table g ON upg.group_id = g.group_id
 """
 
 cursor.execute(query)
@@ -32,7 +30,7 @@ results = cursor.fetchall()
 
 if results:
     for row in results:
-        print(f"Usuário: {row['user_name']} - Contest: {row['contest_name']}")
+        print(f"Usuário: {row['user_name']} - Grupo: {row['group_name']}")
     print(f"\nTotal: {len(results)} resultados")
 else:
     print("Nenhum resultado encontrado ou tabelas vazias.")
