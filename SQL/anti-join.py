@@ -13,8 +13,10 @@ print("=== usuarios sem submissões ===")
 query = """
 SELECT u.id, u.user_name, u.rating
 FROM user_table u
-LEFT JOIN submission_table s ON u.id = s.user_id
-WHERE s.user_id IS NULL
+WHERE u.id not in (
+    SELECT s.user_id 
+    FROM submission_table s
+)
 ORDER BY u.rating DESC;
 """
 
