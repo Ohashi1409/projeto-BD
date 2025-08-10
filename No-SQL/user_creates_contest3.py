@@ -7,6 +7,11 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 database = client.get_database('codeforces')
 
+if "User_1_N_Ohashi" in database.list_collection_names():
+    database.drop_collection("User_1_N_Ohashi")
+if "Contest_1_N_Ohashi" in database.list_collection_names():
+    database.drop_collection("Contest_1_N_Ohashi")
+
 user = database.create_collection("User_1_N_Ohashi")
 contest = database.create_collection("Contest_1_N_Ohashi")
 
@@ -156,11 +161,16 @@ user_docs = [
 ]
 user.insert_many(user_docs)
 
-user = database.get_collection("User_1_N")
-contest = database.get_collection("Contest_1_N")
+user = database.get_collection("User_1_N_Ohashi")
+contest = database.get_collection("Contest_1_N_Ohashi")
 
 # Quais os contests do user 23 ?
-contests_user_1 = list(contest.find({"id": "user_23"}))
-for contests in contests_user_1[0]['created_contests'] :
-    contest_info = contest.find_one({"_id": contest})
-    print(f"contest_id:{contest_info['contest_id']}, group_id:{contest_info['group_id']}, is_private:{contest_info['is_private']}, startTime:{contest_info['startTime']}, frozen_contest:{contest_info['frozen_contest']}, contest_duration:{contest_info['contest_duration']}, contest_name:{contest_info['contest_name']}")
+print("PERGUNTA: Quais os contests do user 23?")
+print("RESPOSTA:")
+contests_user_1 = list(user.find({"id": "user_23"}))
+if contests_user_1:
+    for contests in contests_user_1[0]['created_contests'] :
+        contest_info = contest.find_one({"_id": contests})
+        print(f"contest_id: {contest_info['contest_id']}, group_id: {contest_info['group_id']}, is_private: {contest_info['is_private']}, startTime: {contest_info['startTime']}, frozen_contest: {contest_info['frozen_contest']}, contest_duration: {contest_info['contest_duration']}, contest_name: {contest_info['contest_name']}")
+else:
+    print("Usuário user_23 não encontrado")

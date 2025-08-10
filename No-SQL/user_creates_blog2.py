@@ -57,6 +57,8 @@ user_emb1_docs = [
 user_embedded_blog.insert_many(user_emb1_docs)
 
 # Qual o título do blog escrito pelo usuário com nome 'John Miller'?
+print("PERGUNTA: Qual o título do blog escrito pelo usuário com nome 'John Miller'?")
+print("RESPOSTA:")
 user = user_embedded_blog.find_one({"user_name": "John Miller"})
 if user:
     print(f"Título do blog: {user['blog']['title']}")

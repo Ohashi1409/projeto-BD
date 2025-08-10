@@ -42,6 +42,8 @@ blogs_entrys = [
 blog.insert_many(blogs_entrys)
 
 # Qual o nome dos usuários que criaram o blog com o título 'Entendendo a complexidade de algoritmos'?
+print("PERGUNTA: Qual o nome dos usuários que criaram o blog com o título 'Entendendo a complexidade de algoritmos'?")
+print("RESPOSTA:")
 blog_entry = blog.find_one({"title": "Entendendo a complexidade de algoritmos"})
 if blog_entry:
     user_ids = blog_entry.get("user_ids", [])

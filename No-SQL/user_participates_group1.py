@@ -6,6 +6,13 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client.get_database('codeforces')
 
+if "User_Ref_Group_Heitor" in db.list_collection_names():
+    db.drop_collection("User_Ref_Group_Heitor")
+if "Group_Ref_User_Heitor" in db.list_collection_names():
+    db.drop_collection("Group_Ref_User_Heitor")
+if "UserParticipatesGroup_Ref_Heitor" in db.list_collection_names():
+    db.drop_collection("UserParticipatesGroup_Ref_Heitor")
+
 # Coleções explicativas com seu nome
 users = db.create_collection('User_Ref_Group_Heitor')
 groups = db.create_collection('Group_Ref_User_Heitor')
@@ -39,6 +46,8 @@ participation_docs = [
 participations.insert_many(participation_docs)
 
 # Consulta: Quais são os nomes dos usuários que participam do grupo com nome = 'Estudantes de IA'?
+print("PERGUNTA: Quais são os nomes dos usuários que participam do grupo com nome = 'Estudantes de IA'?")
+print("RESPOSTA:")
 group = groups.find_one({"group_name": "Estudantes de IA"})
 if group:
     participations_cursor = participations.find({"group_id": group["_id"]})

@@ -7,6 +7,9 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 database = client.get_database('codeforces')
 
+if "Problem_1_embedded2" in database.list_collection_names():
+    database.drop_collection("Problem_1_embedded2")
+
 # 1 documento embutindo 1 documento
 problem_embedded = database.create_collection('Problem_1_embedded2')
 
@@ -90,6 +93,8 @@ problems_emb1_docs = [
 problem_embedded.insert_many(problems_emb1_docs)
 
 # Quais os test cases do problema 3?
+print("PERGUNTA: Quais os test cases do problema 3?")
+print("RESPOSTA:")
 problem_3 = problem_embedded.find({"problem_id": 3})
 # Exibir os test cases do problema 3
 for test_case in problem_3[0]['test_cases']:

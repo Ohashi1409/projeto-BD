@@ -17,29 +17,28 @@ blogs_entrys = [
   {
     "entry_id": 1,
     "title": "Como resolver problemas utilizando DFS e BFS",
-    "author1": sample_users[0],
-    "author2": sample_users[1]
+    "authors": [sample_users[0], sample_users[1]]
   },
   {
     "entry_id": 2,
     "title": "Principais algoritmos de ordenação",
-    "author1": sample_users[1],
-    "author2": sample_users[2]
+    "authors": [sample_users[1], sample_users[2]]
   },
   {
     "entry_id": 3,
     "title": "Entendendo a complexidade de algoritmos",
-    "author1": sample_users[0],
-    "author2": sample_users[2]
+    "authors": [sample_users[0], sample_users[2]]
   }
 ]
 
 blog.insert_many(blogs_entrys)
 
 # Qual o email dos usuários que criaram o blog com o título 'Principais algoritmos de ordenação'?
+print("PERGUNTA: Qual o email dos usuários que criaram o blog com o título 'Principais algoritmos de ordenação'?")
+print("RESPOSTA:")
 blog_entry = blog.find_one({"title": "Principais algoritmos de ordenação"})
 if blog_entry:
-    author1 = blog_entry.get("author1", {})
-    author2 = blog_entry.get("author2", {})
-    author_emails = [author1.get("email"), author2.get("email")]
+    authors = blog_entry.get("authors", [])
+    author_emails = [author.get("email") for author in authors]
     print(f"Emails dos usuários que criaram o blog: {author_emails[0]}, {author_emails[1]}")
+

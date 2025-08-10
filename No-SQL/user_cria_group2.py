@@ -27,6 +27,8 @@ groups_embedded_collection.insert_many([
 print("Cenário 2: Dados inseridos com documento embutido.")
 
 
+print("PERGUNTA: Quais grupos foram criados por cada usuário?")
+print("RESPOSTA:")
 print("\n--- CONSULTA CENÁRIO 2 ---")
 
 

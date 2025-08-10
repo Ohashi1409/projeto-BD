@@ -46,6 +46,8 @@ groups_collection.insert_many([
 print("Cenário 1: Dados inseridos com referência.")
 
 
+print("PERGUNTA: Quais grupos foram criados por cada usuário?")
+print("RESPOSTA:")
 print("\n--- CONSULTA CENÁRIO 1 ---")
 
 

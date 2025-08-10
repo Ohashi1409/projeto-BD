@@ -7,6 +7,11 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 database = client.get_database('codeforces')
 
+if "Problem_1_N" in database.list_collection_names():
+    database.drop_collection("Problem_1_N")
+if "TestCase_1_N" in database.list_collection_names():
+    database.drop_collection("TestCase_1_N")
+
 # # 1 documento com várias referências para outros documentos
 problem = database.create_collection('Problem_1_N')
 testCase = database.create_collection('TestCase_1_N')
@@ -110,6 +115,8 @@ problem = database.get_collection('Problem_1_N')
 testCase = database.get_collection('TestCase_1_N')
 
 #Quais os test cases do problema 1?
+print("PERGUNTA: Quais os test cases do problema 1?")
+print("RESPOSTA:")
 test_cases_problem_1 = list(problem.find({"problem_id": 1}))
 # Exibir os test cases do problema 1
 for test_case in test_cases_problem_1[0]['test_cases']:

@@ -6,6 +6,9 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client.get_database('codeforces')
 
+if "UserParticipatesGroup_Embedded_Heitor" in db.list_collection_names():
+    db.drop_collection("UserParticipatesGroup_Embedded_Heitor")
+
 # Coleção de participações embutindo apenas um grupo, nome personalizada
 participations_embedded = db.create_collection('UserParticipatesGroup_Embedded_Heitor')
 
@@ -40,6 +43,8 @@ participation_docs = [
 participations_embedded.insert_many(participation_docs)
 
 # Consulta: Quais são os nomes dos usuários que participam do grupo com nome = 'Estudantes de IA'?
+print("PERGUNTA: Quais são os nomes dos usuários que participam do grupo com nome = 'Estudantes de IA'?")
+print("RESPOSTA:")
 result = participations_embedded.find({"group.group_name": "Estudantes de IA"})
 print("Usuários que participam do grupo 'Estudantes de IA':")
 for participation in result:

@@ -28,6 +28,8 @@ users_embedded_collection.insert_many([
 ])
 print("Cenário 4: Dados inseridos com array de documentos embutidos.")
 
+print("PERGUNTA: Quais grupos cada usuário criou?")
+print("RESPOSTA:")
 print("\n--- CONSULTA CENÁRIO 4 ---")
 
 for user in users_embedded_collection.find():

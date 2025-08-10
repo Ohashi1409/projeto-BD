@@ -7,6 +7,9 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 database = client.get_database('codeforces')
 
+if "User_1_Embedded_2" in database.list_collection_names():
+    database.drop_collection("User_1_Embedded_2")
+
 user_embedded_2 = database.create_collection("User_1_Embedded_2")
 
 user_emb2_docs = [
@@ -134,6 +137,8 @@ user_emb2_docs = [
 user_embedded_2.insert_many(user_emb2_docs)
 
 # Quais os test cases do user 21 ?
+print("PERGUNTA: Quais os contests do user 21?")
+print("RESPOSTA:")
 user_4 = user_embedded_2.find({"id": "user_21"})
 for contest_info in user_4[0]['created_contests']:
     print(f"contest_id:{contest_info['contest_id']}, group_id:{contest_info['group_id']}, is_private:{contest_info['is_private']}, startTime:{contest_info['startTime']}, frozen_contest:{contest_info['frozen_contest']}, contest_duration:{contest_info['contest_duration']}, contest_name:{contest_info['contest_name']}")

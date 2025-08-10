@@ -45,6 +45,8 @@ user2 = {"_id": ObjectId(), "user_id": 2, "name": "Bruno", "submissions": [submi
 db['Users_Levi_1_n'].insert_many([user1, user2])
 
 # Consulta: nomes dos usuários que enviaram submission em Python
+print("PERGUNTA: Quais usuários enviaram submission em Python?")
+print("RESPOSTA:")
 subs = db['Submission_Levi_1_n'].find({"language": "Python"})
 sub_ids = [s["_id"] for s in subs]
 usuarios = db['Users_Levi_1_n'].find({"submissions": {"$in": sub_ids}})

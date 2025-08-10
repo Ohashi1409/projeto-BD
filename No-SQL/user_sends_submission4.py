@@ -38,6 +38,8 @@ user2 = {"_id": ObjectId(), "user_id": 2, "name": "Bruno", "submissions": [submi
 db['Submission_Embedded_Levi'].insert_many([user1, user2])
 
 # Consulta: nomes dos usuários que enviaram submission em Python
+print("PERGUNTA: Quais usuários enviaram submission em Python?")
+print("RESPOSTA:")
 usuarios = db['Submission_Embedded_Levi'].find({"submissions.language": "Python"})
 print("Usuários que enviaram submission em Python:")
 for u in usuarios:

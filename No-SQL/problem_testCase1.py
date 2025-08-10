@@ -3,9 +3,13 @@ from pymongo.server_api import ServerApi
 
 uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-# Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 database = client.get_database('codeforces')
+
+if "Problem_1_1" in database.list_collection_names():
+    database.drop_collection("Problem_1_1")
+if "TestCase_1_1" in database.list_collection_names():
+    database.drop_collection("TestCase_1_1")
 
 # 1:1 documento
 problem = database.create_collection('Problem_1_1')
@@ -40,7 +44,6 @@ problem_docs = [
 problem_ids = problem.insert_many(problem_docs).inserted_ids
 
 test_case_docs = [
-    # Test cases for problem 1
     {
         "test_case_disc": "Test Case 1.1",
         "test_case_input": "2 3",
@@ -100,8 +103,9 @@ test_case_docs = [
 ]
 testCase.insert_many(test_case_docs)
 
-#Quais os test cases do problema 1?
+# Quais os test cases do problema 1?
+print("PERGUNTA: Quais os test cases do problema 1?")
+print("RESPOSTA:")
 test_cases_problem_1 = list(testCase.find({"problem_id": problem_ids[0]}))
-# Exibir os test cases do problema 1
 for test_case in test_cases_problem_1:
     print(f"Test Case: {test_case['test_case_disc']}, Input: {test_case['test_case_input']}, Output: {test_case['test_case_output']}")

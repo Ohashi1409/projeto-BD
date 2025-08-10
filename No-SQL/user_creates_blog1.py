@@ -10,8 +10,6 @@ database = client.get_database('codeforces')
 user = database["User_1_1"]
 sample_ids = list(user.distinct('_id')) # pega IDs de tabela já criada
 
-print(f"Sample IDs from User_1_1: {sample_ids}")
-
 if "Blog_1_1" in database.list_collection_names():
     database.drop_collection("Blog_1_1")
 
@@ -37,6 +35,8 @@ blogs_entrys = [
 inserted_entrys = blog.insert_many(blogs_entrys).inserted_ids
 
 # Qual o nome do usuário que criou o blog com o ID 1?
+print("PERGUNTA: Qual o nome do usuário que criou o blog com o ID 1?")
+print("RESPOSTA:")
 user_id = blog.find_one({"entry_id": 1})['user_id']
 user_info = user.find_one({"_id": user_id})
 print(f"Usuário que criou o blog com ID '1': {user_info['user_name']}")

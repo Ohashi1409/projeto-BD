@@ -30,6 +30,8 @@ users_collection.insert_many([
 ])
 print("Cenário 3: Dados inseridos com array de referências.")
 
+print("PERGUNTA: Quais grupos cada usuário criou?")
+print("RESPOSTA:")
 print("\n--- CONSULTA CENÁRIO 3 ---")
 
 for user in users_collection.find():

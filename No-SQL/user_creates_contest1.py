@@ -3,9 +3,13 @@ from pymongo.server_api import ServerApi
 
 uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-# Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 database = client.get_database('codeforces')
+
+if "User_1_1" in database.list_collection_names():
+    database.drop_collection("User_1_1")
+if "Contest_1_1" in database.list_collection_names():
+    database.drop_collection("Contest_1_1")
 
 # 1 documento referenciando apenas 1 documento
 user = database.create_collection("User_1_1")
@@ -143,6 +147,8 @@ contest_docs = [
 contest_ids = contest.insert_many(contest_docs).inserted_ids
 
 # Quais os contest criados pelo usuário 1 ?
+print("PERGUNTA: Quais os contest criados pelo usuário 1?")
+print("RESPOSTA:")
 contests_user_1 = list(contest.find({"user_id_creator": user_ids[0]}))
 for contests in contests_user_1:
   print(f"contest_id:{contests['contest_id']}, group_id:{contests['group_id']}, is_private:{contests['is_private']}, startTime:{contests['startTime']}, frozen_contest:{contests['frozen_contest']}, contest_duration:{contests['contest_duration']}, contest_name:{contests['contest_name']}")

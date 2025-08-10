@@ -6,6 +6,11 @@ uri = "mongodb+srv://root:rootpassword@cluster0.wtuzryd.mongodb.net/?retryWrites
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client.get_database('codeforces')
 
+if "User_ArrayRef_Group_Heitor" in db.list_collection_names():
+    db.drop_collection("User_ArrayRef_Group_Heitor")
+if "Group_ArrayRef_User_Heitor" in db.list_collection_names():
+    db.drop_collection("Group_ArrayRef_User_Heitor")
+
 # Coleções explicativas com seu nome
 users = db.create_collection('User_ArrayRef_Group_Heitor')
 groups = db.create_collection('Group_ArrayRef_User_Heitor')
@@ -43,6 +48,8 @@ group_docs = [
 groups.insert_many(group_docs)
 
 # Consulta: Quais são os nomes dos usuários que participam do grupo com nome = 'Estudantes de IA'?
+print("PERGUNTA: Quais são os nomes dos usuários que participam do grupo com nome = 'Estudantes de IA'?")
+print("RESPOSTA:")
 group = groups.find_one({"group_name": "Estudantes de IA"})
 if group and "user_ids" in group:
     user_cursor = users.find({"_id": {"$in": group["user_ids"]}})
